@@ -2,10 +2,34 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 
 metadata:
-  name: backstage-learning
-  description: My first Backstage entity
+  name: instagram-learning
+  title: Instagram Learning 
+  description: Main backend service for Instagram platform
+
+  annotations:
+    github.com/project-slug: amirsohel/backstage-learning
+
+  tags:
+    - nodejs
+    - mongodb
+    - logistics
+    - delivery
+
+  links:
+    - url: https://github.com/amirsohel/backstage-learning
+      title: GitHub Repository
+
+    - url: https://www.instagram.com/
+      title: Instagram Website
 
 spec:
   type: service
   lifecycle: production
   owner: user:guest
+  system: instagram-platform
+
+  providesApis:
+    - instagram-api
+
+  dependsOn:
+    - resource:default/instagram-mongodb
