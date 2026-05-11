@@ -2,34 +2,95 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 
 metadata:
-  name: instagram-learning
-  title: Instagram Learning 
-  description: Main backend service for Instagram platform
+  name: backstage-learning
+  title: Backstage Learning Service
+  description: Main backend service for Backstage learning project
 
   annotations:
     github.com/project-slug: amirsohel/backstage-learning
 
   tags:
     - nodejs
+    - backstage
     - mongodb
-    - logistics
-    - delivery
+    - learning
 
   links:
     - url: https://github.com/amirsohel/backstage-learning
       title: GitHub Repository
 
-    - url: https://www.instagram.com/
-      title: Instagram Website
-
 spec:
   type: service
   lifecycle: production
   owner: user:guest
-  system: instagram-platform
+  system: backstage-learning-platform
 
   providesApis:
-    - instagram-api
+    - backstage-learning-api
 
   dependsOn:
-    - resource:default/instagram-mongodb
+    - resource:default/backstage-learning-mongodb
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+
+metadata:
+  name: backstage-learning-api
+  description: Public APIs for Backstage learning project
+
+spec:
+  type: openapi
+  lifecycle: production
+  owner: user:guest
+
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Backstage Learning API
+      version: 1.0.0
+
+    paths:
+      /activities:
+        get:
+          summary: Get Activities
+
+      /orders:
+        get:
+          summary: Get Orders
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+
+metadata:
+  name: backstage-learning-mongodb
+  description: MongoDB database for Backstage learning project
+
+spec:
+  type: database
+  owner: user:guest
+  system: backstage-learning-platform
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+
+metadata:
+  name: backstage-learning-platform
+  description: Main platform for Backstage learning
+
+spec:
+  owner: user:guest
+  domain: learning
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+
+metadata:
+  name: learning
+  description: Learning and experimentation domain
+
+spec:
+  owner: user:guest
