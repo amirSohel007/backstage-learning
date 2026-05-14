@@ -1,0 +1,73 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: user-service-api
+  description: REST API service for managing users and returning JSON responses
+  tags:
+    - nodejs
+    - rest-api
+    - json
+spec:
+  type: service
+  lifecycle: production
+  owner: engineering
+  system: elitewash-platform
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: user-service-rest-api
+  description: User Service REST API definition
+spec:
+  type: openapi
+  lifecycle: production
+  owner: engineering
+  system: elitewash-platform
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: User Service API
+      version: 1.0.0
+
+    paths:
+      /users:
+        get:
+          summary: Get all users
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+
+      /users/{id}:
+        get:
+          summary: Get user by ID
+          parameters:
+            - in: path
+              name: id
+              required: true
+              schema:
+                type: string
+
+          responses:
+            '200':
+              description: Successful response
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
