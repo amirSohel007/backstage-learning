@@ -1,0 +1,37 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: engineering
+  description: Engineering Team
+spec:
+  type: team
+  profile:
+    displayName: Engineering
+    email: engineering@elitewash.com
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: operations
+  description: Operations Team
+spec:
+  type: team
+  profile:
+    displayName: Operations
+    email: operations@elitewash.com
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: management
+  description: Management Team
+spec:
+  type: team
+  profile:
+    displayName: Management
+    email: management@elitewash.com
+  children: []

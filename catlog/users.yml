@@ -1,0 +1,47 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: amir
+spec:
+  profile:
+    displayName: Amir Sohel
+    email: amir@elitewash.com
+  memberOf:
+    - engineering
+    - management
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: vishal
+spec:
+  profile:
+    displayName: Vishal Balai
+    email: vishal@elitewash.com
+  memberOf:
+    - operations
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: shivam
+spec:
+  profile:
+    displayName: Shivam
+    email: shivam@elitewash.com
+  memberOf:
+    - operations
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: developer1
+spec:
+  profile:
+    displayName: Elitewash Developer
+    email: dev1@elitewash.com
+  memberOf:
+    - engineering
